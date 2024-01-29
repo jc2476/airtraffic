@@ -10,6 +10,9 @@ COPY . .
 # Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Expose port 5000 for the application
+EXPOSE 5000
+
 # Make Gunicorn bind to 0.0.0.0:5000 and start 3 worker processes
 CMD ["gunicorn", "-b", "0.0.0.0:5000", "-w", "3", "app:app"]
 # 'app:app' refers to `<module_name>:<Flask_app_object>`. Ensure this matches your Flask app's structure.
